@@ -15,6 +15,8 @@ body {
     display: flex;
     justify-content: center;
     gap: .5rem;
+    color: black;
+
 }
 
 button:not([type="submit"]){
@@ -28,7 +30,8 @@ button:not([type="submit"]){
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    color: black;
+    font-weight: 600;
 }
 
 .container {
@@ -72,6 +75,7 @@ button[type="submit"] {
     border: none;
     background-color: hsl(120 70% 50% / .8);
     font-size: 1rem;
+    color: black;
 }
 
 label {
@@ -104,6 +108,7 @@ select > * {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 
 .card .toggleStatusBtn {
@@ -116,6 +121,7 @@ select > * {
     justify-content: center;
     align-items: center;
     text-wrap: nowrap;
+    color: black;
 }
 
 #close-modal-btn {
