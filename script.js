@@ -1,5 +1,7 @@
 const container = document.querySelector(".container");
 const newBookBtn = document.querySelector("button");
+const showLibraryBtn = document.querySelector(".show");
+const clearBtn = document.querySelector(".clear");
 
 const myLibrary = [
     {
@@ -28,6 +30,8 @@ function addBookToLibrary(title, author, pages) {
 }
 
 function displayLibrary(library) {
+    container.innerHTML = "";
+    
     for(let i = 0; i < library.length; i++) {
         const book = library[i];
         const card = document.createElement("div");
@@ -44,8 +48,16 @@ newBookBtn.addEventListener("click", () => {
     const title = prompt("Enter a book");
     const author = prompt("Enter the author");
     const pages = prompt("Enter the page length");
-
-    addBookToLibrary(title, author, pages);
+    if(title && author && pages) {
+        addBookToLibrary(title, author, pages);
+    }
 })
 
-displayLibrary(myLibrary)
+showLibraryBtn.addEventListener("click", () => {
+    displayLibrary(myLibrary);
+})
+
+clearBtn.addEventListener("click", () => {
+    myLibrary.splice(0, myLibrary.length);
+    displayLibrary(myLibrary);
+})
