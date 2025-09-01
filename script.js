@@ -4,8 +4,11 @@ const showLibraryBtn = document.querySelector(".show");
 const clearBtn = document.querySelector(".clear");
 
 const getInfo = document.querySelector(".get-info");
-const title = document.querySelector("#book-title");
-const
+const bookTitle = document.querySelector("#book-title");
+const bookAuthor = document.querySelector("#book-author");
+const bookPages = document.querySelector("#page-count");
+const bookRead = document.querySelector("#read-status");
+const addBookBtn = document.querySelector("#submit-btn");
 
 const myLibrary = [
     {
@@ -51,14 +54,10 @@ function displayLibrary(library) {
 
 newBookBtn.addEventListener("click", () => {
     getInfo.showModal();
-
-    // const title = prompt("Enter a book");
-    // const author = prompt("Enter the author");
-    // const pages = prompt("Enter the page length");
-    // const read = promp("Have you read this book?")
-    // if(title && author && pages) {
-    //     addBookToLibrary(title, author, pages);
-    // }
+    bookTitle.value = "";
+    bookAuthor.value = "";
+    bookPages.value = "";
+    bookRead.value = "";
 })
 
 showLibraryBtn.addEventListener("click", () => {
@@ -68,4 +67,16 @@ showLibraryBtn.addEventListener("click", () => {
 clearBtn.addEventListener("click", () => {
     myLibrary.splice(0, myLibrary.length);
     displayLibrary(myLibrary);
+})
+
+addBookBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const title = bookTitle.value;
+    const author = bookAuthor.value;
+    const pages = bookPages.value;
+    const read = bookRead.value === "Read";
+    if(title && author && pages) {
+        addBookToLibrary(title, author, pages, read);
+    }
+    getInfo.close();
 })
