@@ -15,12 +15,14 @@ let myLibrary = [
         title: "Harry Potter",
         author: "JK Rowling",
         pages: "300",
+        read: false,
         id: crypto.randomUUID()
     },
     {
         title: "Lord of the Rings",
         author: "J.R.R Tolkien",
         pages: "600",
+        read: true,
         id: crypto.randomUUID()
     }
 ];
@@ -53,8 +55,14 @@ function displayLibrary(library) {
         deleteBtn.setAttribute("data-id", book.id);
 
         const toggleStatusBtn = document.createElement("button");
-        toggleStatusBtn.textContent = "Not Read";
         toggleStatusBtn.classList.add("toggleStatusBtn");
+
+        if(book.read) {
+            toggleStatusBtn.textContent = "Read";
+            toggleStatusBtn.style.backgroundColor = "green";
+        } else {
+            toggleStatusBtn.textContent= "Not Read";
+        }
 
         card.textContent = `
         ${book.title}
@@ -78,7 +86,14 @@ function addDeleteListeners() {
     })
 }
 
-
+function addToggleEventListeners() {
+    container.addEventListener("click", (e) => {
+        if(e.target.classList.contains("toggleStatusBtn")) {
+            e.target.style.backgroundColor = "green";
+            e.target.textContent = "Read";
+        }
+    })
+}
 
 newBookBtn.addEventListener("click", () => {
     getInfo.showModal();
@@ -102,7 +117,7 @@ addBookBtn.addEventListener("click", (e) => {
     const title = bookTitle.value;
     const author = bookAuthor.value;
     const pages = bookPages.value;
-    const read = bookRead.value === "Read";
+    const read = bookRead.value === "read";
     if(title && author && pages) {
         addBookToLibrary(title, author, pages, read);
     }
