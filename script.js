@@ -2,6 +2,7 @@ const container = document.querySelector(".container");
 const newBookBtn = document.querySelector("button");
 const showLibraryBtn = document.querySelector(".show");
 const clearBtn = document.querySelector(".clear");
+const getInfo = document.querySelector(".get-info");
 
 const myLibrary = [
     {
@@ -16,14 +17,15 @@ const myLibrary = [
     }
 ];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title,
     this.author = author,
     this.pages = pages
+    this.read = read
 }
 
-function addBookToLibrary(title, author, pages) {
-    const book = new Book(title, author, pages);
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
     displayLibrary(myLibrary);
@@ -45,12 +47,15 @@ function displayLibrary(library) {
 }
 
 newBookBtn.addEventListener("click", () => {
-    const title = prompt("Enter a book");
-    const author = prompt("Enter the author");
-    const pages = prompt("Enter the page length");
-    if(title && author && pages) {
-        addBookToLibrary(title, author, pages);
-    }
+    getInfo.showModal();
+
+    // const title = prompt("Enter a book");
+    // const author = prompt("Enter the author");
+    // const pages = prompt("Enter the page length");
+    // const read = promp("Have you read this book?")
+    // if(title && author && pages) {
+    //     addBookToLibrary(title, author, pages);
+    // }
 })
 
 showLibraryBtn.addEventListener("click", () => {
