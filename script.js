@@ -31,9 +31,11 @@ function displayLibrary(library) {
     for(let i = 0; i < library.length; i++) {
         const book = library[i];
         const card = document.createElement("div");
-        card.classList.add(".card")
-        card.textContent = `${book.title} 
-        by ${book.author} is ${book.pages} pages long.`
+        card.classList.add("card")
+        card.textContent = `
+        ${book.title}
+        by ${book.author}
+        is ${book.pages} pages long.`
         container.appendChild(card);
     }
 }
