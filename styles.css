@@ -8,7 +8,8 @@
 body {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: hsl(0 0% 50% / .5)
+    background-color: hsl(0 0% 50% / .5);
+    max-width: 100vw;
 }
 
 .buttons {
