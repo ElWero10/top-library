@@ -54,6 +54,7 @@ dialog {
     margin: auto;
     border-radius: 20px;
     border: none;
+    position: relative;
 }
 
 form {
@@ -115,4 +116,15 @@ select > * {
     justify-content: center;
     align-items: center;
     text-wrap: nowrap;
+}
+
+#close-modal-btn {
+    background: transparent;
+    position: absolute;
+    border: none;
+    font-size: 2rem;
+    top: -1.2rem;
+    left: -1rem;
+    cursor: pointer;
+    color: #333;
 }

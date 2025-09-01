@@ -9,6 +9,7 @@ const bookAuthor = document.querySelector("#book-author");
 const bookPages = document.querySelector("#page-count");
 const bookRead = document.querySelector("#read-status");
 const addBookBtn = document.querySelector("#submit-btn");
+const closeModalBtn = document.querySelector("#close-modal-btn")
 
 let myLibrary = [
     {
@@ -121,6 +122,10 @@ addBookBtn.addEventListener("click", (e) => {
     if(title && author && pages) {
         addBookToLibrary(title, author, pages, read);
     }
+    getInfo.close();
+})
+
+closeModalBtn.addEventListener("click", () => {
     getInfo.close();
 })
 
