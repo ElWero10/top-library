@@ -2,7 +2,10 @@ const container = document.querySelector(".container");
 const newBookBtn = document.querySelector("button");
 const showLibraryBtn = document.querySelector(".show");
 const clearBtn = document.querySelector(".clear");
+
 const getInfo = document.querySelector(".get-info");
+const title = document.querySelector("#book-title");
+const
 
 const myLibrary = [
     {
