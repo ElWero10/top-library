@@ -4,3 +4,28 @@
     box-sizing: border-box;
 }
 
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: grey;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+button {
+    background-color: aqua;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    background-color: blue;
+}
