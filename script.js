@@ -10,16 +10,18 @@ const bookPages = document.querySelector("#page-count");
 const bookRead = document.querySelector("#read-status");
 const addBookBtn = document.querySelector("#submit-btn");
 
-const myLibrary = [
+let myLibrary = [
     {
         title: "Harry Potter",
         author: "JK Rowling",
-        pages: "300"
+        pages: "300",
+        id: crypto.randomUUID()
     },
     {
         title: "Lord of the Rings",
         author: "J.R.R Tolkien",
-        pages: "600"
+        pages: "600",
+        id: crypto.randomUUID()
     }
 ];
 
@@ -44,13 +46,39 @@ function displayLibrary(library) {
         const book = library[i];
         const card = document.createElement("div");
         card.classList.add("card")
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.classList.add("deleteBtn");
+        deleteBtn.setAttribute("data-id", book.id);
+
+        const toggleStatusBtn = document.createElement("button");
+        toggleStatusBtn.textContent = "Not Read";
+        toggleStatusBtn.classList.add("toggleStatusBtn");
+
         card.textContent = `
         ${book.title}
         by ${book.author}
-        is ${book.pages} pages long.`
+        is ${book.pages} pages long.`;
+
+        card.appendChild(toggleStatusBtn);
+        card.appendChild(deleteBtn);
         container.appendChild(card);
     }
 }
+
+
+function addDeleteListeners() {
+    container.addEventListener("click", (e) => {
+        if(e.target.classList.contains("deleteBtn")) {
+            const bookId = e.target.getAttribute("data-id");
+            myLibrary = myLibrary.filter(book => book.id !== bookId);
+            displayLibrary(myLibrary);
+        }
+    })
+}
+
+
 
 newBookBtn.addEventListener("click", () => {
     getInfo.showModal();
@@ -80,3 +108,6 @@ addBookBtn.addEventListener("click", (e) => {
     }
     getInfo.close();
 })
+
+addToggleEventListeners();
+addDeleteListeners();
