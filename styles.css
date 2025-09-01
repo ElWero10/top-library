@@ -9,7 +9,6 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: hsl(0 0% 50% / .5);
-    min-width: 100vw;
 }
 
 .buttons {
